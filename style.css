@@ -7,6 +7,11 @@
   box-sizing: border-box;
 }
 
+svg,
+img {
+  display: inline-block;
+}
+
 /* || VARIABLES */
 :root {
   /* Game move colors */
@@ -155,9 +160,62 @@ body {
   font-size: 1rem;
   text-transform: uppercase;
   padding: 1rem 3rem;
-  border-radius: 1rem;
+  border-radius: .5rem;
   align-self: center;
 }
+
+/* || ACTIVE */
+.game-active {
+  display: none;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  place-items: center;
+  row-gap: 3rem;
+}
+
+.user-pick {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 2rem;
+}
+
+.move-title {
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+  text-align: center;
+}
+
+.move-icon {
+  background-color: white;
+  width: fit-content;
+  padding: 1.5rem 2rem;
+  border-radius: 50%;
+}
+
+.result {
+  grid-column: 1 / span 2;
+  text-align: center;
+  display: none;
+}
+
+.result-text {
+  color: white;
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+
+.replay {
+  padding: 1.5rem 2rem;
+  border-radius: .5rem;
+  color: var(--bg-color2);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+  border: none;
+}
+
 /* || FOOTER */
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }
@@ -212,5 +270,25 @@ body {
   }
   .bg-triangle {
     width: 250px;
+  }
+  /* || ACTIVE */
+  .game-active {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: max-content;
+    column-gap: 3rem;
+  }
+  .user-pick {
+    flex-direction: column;
+  }
+  .house {
+    grid-column: 3;
+  }
+  .result {
+    grid-row: 1;
+    grid-column: 2;
+  }
+  .replay {
+    margin-top: .5rem;
+    padding: 1rem 2.5rem;
   }
 }
