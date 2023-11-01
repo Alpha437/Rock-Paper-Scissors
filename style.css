@@ -170,7 +170,7 @@ body {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
   place-items: center;
-  row-gap: 3rem;
+  row-gap: 2rem;
 }
 
 .user-pick {
@@ -188,9 +188,9 @@ body {
 }
 
 .move-icon {
-  background-color: white;
+  background: linear-gradient(to bottom, rgb(219, 219, 219), white);
   width: fit-content;
-  padding: 1.5rem 2rem;
+  padding: 1rem 1.5rem;
   border-radius: 50%;
 }
 
