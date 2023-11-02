@@ -18,7 +18,7 @@ const hidden = document.querySelector('.hidden');
 
 // Destructuring
 const [playerMove, houseMove] = moveIcon;
-const [player, house] = userMove;
+// const [player, house] = userMove;
 let scoreCount = 0;
 
 let pMove, hMove;
@@ -59,7 +59,7 @@ function pickMove() {
   setTimeout(() => {
     houseMove.style.background =
       'linear-gradient(to bottom, rgb(219, 219, 219), white)';
-    html = `<img src="./images/icon-${randomMove}.svg" alt="" class="paper-image user-move-icon hidden">
+    html = `<img src="./images/icon-${randomMove}.svg" alt="" class="paper-image user-move-icon">
     `;
     houseMove.classList.toggle(`${randomMove}`);
     houseMove.innerHTML = html;
