@@ -37,7 +37,8 @@ img {
   /* Others */
   --fw-normal: 600;
   --fw-bold: 700;
-  --icon-size: 3rem;
+  --icon-width: 3rem;
+  --icon-height: 3.5rem;
 }
 
 /* || GENERAL STYLES */
@@ -47,7 +48,7 @@ body {
 }
 
 .app {
-  /* padding: 1rem; */
+  padding: .5rem;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -107,14 +108,15 @@ body {
 }
 
 .move--icon {
-  width: var(--icon-size);
-  position: relative;
+  width: var(--icon-width);
+  object-fit: contain;
 }
 
 .move--wrapper {
   background: linear-gradient(to bottom, rgb(219, 219, 219), white);
-  width: fit-content;
-  padding: 1rem 1.5rem;
+  background-color: red;
+  width: 7rem;
+  height: 7rem;
   border: 10px solid black;
   border-radius: 50%;
   position: relative;
@@ -122,9 +124,9 @@ body {
 
 .move--wrapper::before {
   content: '';
-  width: var(--icon-size);
-  height: var(--icon-size);
-  padding: 1rem 1.45rem;
+  width: var(--icon-width);
+  height: var(--icon-width);
+  padding: 1rem 1.3rem;
   position: absolute;
   border-top: 6px solid var(--drop-shadow);
   top: 0;
@@ -144,7 +146,6 @@ body {
 }
 
 .rock {
-  padding: 1.2rem 1.5rem;
   border: 10px solid var(--rock-light);
   box-shadow: 0 5px 0 0 var(--rock-dark);
   grid-column: 1 / 3;
@@ -190,9 +191,30 @@ body {
 
 .move-icon {
   background: linear-gradient(to bottom, rgb(219, 219, 219), white);
-  width: fit-content;
-  padding: 1rem 1.5rem;
+  width: 7rem;
+  height: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
+  position: relative;
+}
+
+.icon::before {
+  content: '';
+  width: var(--icon-width);
+  height: var(--icon-width);
+  padding: 1rem 1.3rem;
+  position: absolute;
+  border-top: 6px solid var(--drop-shadow);
+  top: 0;
+  right: 1px;
+  border-radius: 50%;
+}
+
+.user-move-icon {
+  width: var(--icon-width);
+  object-fit: contain;
 }
 
 .result {
@@ -221,9 +243,11 @@ body {
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }
 
+
+/* 
 @media screen and (min-width: 768px) {
   :root {
-    --icon-size: 7rem;
+    --icon-width: 7rem;
   }
   .heading {
     width: 80%;
@@ -275,7 +299,7 @@ body {
   .bg-triangle {
     width: 250px;
   }
-  /* || ACTIVE */
+  // || ACTIVE 
   .game-active {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: max-content;
@@ -285,6 +309,8 @@ body {
     flex-direction: column;
   }
   .move-icon {
+    width: 13rem;
+    height: 13rem;
     padding: 2rem 2.5rem;
     position: relative;
   }
@@ -314,4 +340,4 @@ body {
     margin-top: .5rem;
     padding: 1rem 2.5rem;
   }
-}
+} */

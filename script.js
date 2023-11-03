@@ -29,6 +29,7 @@ function resetGame() {
   result.style.display = 'none';
   playerMove.classList.toggle(`${pMove}`);
   houseMove.classList.toggle(`${hMove}`);
+  houseMove.classList.toggle('icon');
 }
 
 function collapseMoves() {
@@ -62,6 +63,7 @@ function pickMove() {
     html = `<img src="./images/icon-${randomMove}.svg" alt="" class="paper-image user-move-icon">
     `;
     houseMove.classList.toggle(`${randomMove}`);
+    houseMove.classList.toggle('icon');
     houseMove.innerHTML = html;
   }, 5000);
 
