@@ -7,18 +7,18 @@ const moves = document.querySelector('.moves');
 const triangle = document.querySelector('.bg-triangle');
 const moveBtn = document.querySelectorAll('.move--wrapper');
 const gameActive = document.querySelector('.game-active');
-const userMoveIcon = document.querySelector('.user-move-icon');
+const userMoveIcon = document.querySelectorAll('.user-move-icon');
 const moveIcon = document.querySelectorAll('.move-icon');
 const userMove = document.querySelectorAll('.user-pick');
 const result = document.querySelector('.result');
 const resultText = document.querySelector('.result-text');
 const rulesBtn = document.querySelector('.rules');
 const replayBtn = document.querySelector('.replay');
-const hidden = document.querySelector('.hidden');
+const cancelBtn = document.querySelector('.cancel');
+
 
 // Destructuring
 const [playerMove, houseMove] = moveIcon;
-// const [player, house] = userMove;
 let scoreCount = 0;
 
 let pMove, hMove;
@@ -37,20 +37,23 @@ function collapseMoves() {
   triangle.style.display = 'none';
 }
 
+function generateIcon(move) {
+  return `<img src="./images/icon-${move}.svg" alt="" class="user-move-icon">
+  `;
+}
+
 function pickMove() {
   collapseMoves();
   const moveName = this.classList[1];
   const hidden =
-    '<img src="./images/icon-paper.svg" alt="" class="paper-image user-move-icon" style="visibility: hidden;"></img>';
+    '<img src="./images/icon-paper.svg" alt="" class="user-move-icon" style="visibility: hidden;">';
   const rps = ['rock', 'paper', 'scissors'];
   const randomMove = rps[Math.trunc(rps.length * Math.random())];
   let html;
 
   // Player move
-  html = `<img src="./images/icon-${moveName}.svg" alt="" class="paper-image user-move-icon">
-  `;
   playerMove.classList.toggle(`${moveName}`);
-  playerMove.innerHTML = html;
+  playerMove.innerHTML = generateIcon(moveName);
   houseMove.innerHTML = hidden;
   houseMove.style.background = 'var(--bg-color2)';
   gameActive.style.display = 'grid';
@@ -60,11 +63,9 @@ function pickMove() {
   setTimeout(() => {
     houseMove.style.background =
       'linear-gradient(to bottom, rgb(219, 219, 219), white)';
-    html = `<img src="./images/icon-${randomMove}.svg" alt="" class="paper-image user-move-icon">
-    `;
     houseMove.classList.toggle(`${randomMove}`);
     houseMove.classList.toggle('icon');
-    houseMove.innerHTML = html;
+    houseMove.innerHTML = generateIcon(randomMove);
   }, 5000);
 
   // Decide winner
@@ -80,7 +81,7 @@ function pickMove() {
       scoreCount = 0;
       score.textContent = '00';
     }
-  }, 7000);
+  }, 6000);
 }
 
 function decideWinner(player, computer) {
@@ -103,5 +104,15 @@ function decideWinner(player, computer) {
   result.style.display = 'block';
 }
 
+function collapseRules() {
+  document.querySelector('.rule-container').style.display = 'none';
+}
+
+// Event handlers
 moveBtn.forEach((move) => move.addEventListener('click', pickMove));
 replayBtn.addEventListener('click', resetGame);
+rulesBtn.addEventListener('click', () => {
+  document.querySelector('.rule-container').style.display = 'grid';
+});
+cancelBtn.addEventListener('click', collapseRules)
+document.querySelector('.rule-container').addEventListener('click', collapseRules)
