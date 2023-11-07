@@ -30,10 +30,10 @@ function resetGame() {
   playerMove.classList.toggle(`${pMove}`);
   houseMove.classList.toggle(`${hMove}`);
   houseMove.classList.toggle('icon');
-  if (player_Move.classList.contains('winner')) {
+  if(player_Move.classList.contains('winner')){
     player_Move.classList.toggle('winner');
   }
-  if (house_Move.classList.contains('winner')) {
+  if(house_Move.classList.contains('winner')){
     house_Move.classList.toggle('winner');
   }
 }
