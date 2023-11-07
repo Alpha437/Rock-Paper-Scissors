@@ -16,9 +16,9 @@ const rulesBtn = document.querySelector('.rules');
 const replayBtn = document.querySelector('.replay');
 const cancelBtn = document.querySelector('.cancel');
 
-
 // Destructuring
 const [playerMove, houseMove] = moveIcon;
+const [player_Move, house_Move] = userMove;
 let scoreCount = 0;
 
 let pMove, hMove;
@@ -30,6 +30,12 @@ function resetGame() {
   playerMove.classList.toggle(`${pMove}`);
   houseMove.classList.toggle(`${hMove}`);
   houseMove.classList.toggle('icon');
+  if (player_Move.classList.contains('winner')) {
+    player_Move.classList.toggle('winner');
+  }
+  if (house_Move.classList.contains('winner')) {
+    house_Move.classList.toggle('winner');
+  }
 }
 
 function collapseMoves() {
@@ -84,22 +90,30 @@ function pickMove() {
   }, 6000);
 }
 
+function displayTextAndEffect(winner) {
+  if (winner == 'player') {
+    resultText.textContent = 'You win';
+    scoreCount++;
+    player_Move.classList.toggle('winner');
+  } else {
+    resultText.textContent = 'You lose';
+    scoreCount--;
+    house_Move.classList.toggle('winner');
+  }
+}
+
 function decideWinner(player, computer) {
   if (player == 'paper' && computer == 'rock') {
-    resultText.textContent = 'You win';
-    scoreCount++;
+    displayTextAndEffect('player');
   } else if (player == 'rock' && computer == 'scissors') {
-    resultText.textContent = 'You win';
-    scoreCount++;
+    displayTextAndEffect('player');
   } else if (player == 'scissors' && computer == 'paper') {
-    resultText.textContent = 'You win';
-    scoreCount++;
+    displayTextAndEffect('player');
   } else if (player == computer) {
     resultText.textContent = 'Draw';
     scoreCount = scoreCount;
   } else {
-    resultText.textContent = 'You lose';
-    scoreCount--;
+    displayTextAndEffect('computer');
   }
   result.style.display = 'block';
 }
@@ -114,5 +128,7 @@ replayBtn.addEventListener('click', resetGame);
 rulesBtn.addEventListener('click', () => {
   document.querySelector('.rule-container').style.display = 'grid';
 });
-cancelBtn.addEventListener('click', collapseRules)
-document.querySelector('.rule-container').addEventListener('click', collapseRules)
+cancelBtn.addEventListener('click', collapseRules);
+document
+  .querySelector('.rule-container')
+  .addEventListener('click', collapseRules);
