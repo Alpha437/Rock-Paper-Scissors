@@ -386,6 +386,9 @@ body {
   .bg-triangle {
     width: 250px;
   }
+  .rules {
+    align-self: last baseline;
+  }
   /* || ACTIVE */
   .game-active {
     grid-template-columns: repeat(3, 1fr);
