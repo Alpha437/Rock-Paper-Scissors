@@ -33,8 +33,8 @@ function resetGame() {
   if(player_Move.classList.contains('winner')){
     player_Move.classList.toggle('winner');
   }
-  if(house_Move.classList.contains('winner')){
-    house_Move.classList.toggle('winner');
+  if(house_Move.classList.contains('winner1')){
+    house_Move.classList.toggle('winner1');
   }
 }
 
@@ -98,7 +98,7 @@ function displayTextAndEffect(winner) {
   } else {
     resultText.textContent = 'You lose';
     scoreCount--;
-    house_Move.classList.toggle('winner');
+    house_Move.classList.toggle('winner1');
   }
 }
 
