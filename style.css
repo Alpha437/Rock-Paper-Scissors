@@ -388,6 +388,8 @@ body {
   }
   .rules {
     align-self: last baseline;
+    padding: .5rem 3rem;
+    font-weight: var(--fw-bold);
   }
   /* || ACTIVE */
   .game-active {
