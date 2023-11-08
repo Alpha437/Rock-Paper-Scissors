@@ -12,6 +12,10 @@ img {
   display: inline-block;
 }
 
+button {
+  cursor: pointer;
+}
+
 /* || VARIABLES */
 :root {
   /* Game move colors */
